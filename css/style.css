@@ -1,3 +1,20 @@
+@keyframes logoAnimation {
+    from {
+        width: 25px;
+        opacity: 0;
+    }
+    to {
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+#logo {
+    animation-name: logoAnimation;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
 /* Edit the body element to use the Poppins font (using Google fonts) 
 with serif as a backup. It should also use the image “concrete_seamless.png” 
 as a background-image with a backup color of #f1f1f1. */
@@ -65,6 +82,7 @@ You can see that in the mobile view they all have the same width.  */
     display: flex;
     flex-direction: column;
     flex-basis: 450px;
+    flex-shrink: 1;
 }
 
 /* Edit the css for the pricing class to match our example. 
@@ -95,7 +113,9 @@ the changes are not from media queries, but from the use of flex.) */
 
 .gallery {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    
+    flex-wrap: wrap;
 }
 
 /* Media query for screen width greater than 900px */
@@ -139,10 +159,16 @@ the changes are not from media queries, but from the use of flex.) */
         /* Add any other styles as needed */
     }
 
+    main {
+        margin-top: 100px;
+    }
+
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
-
+    #logo {
+        animation: none;
+    }
 }
 
 @media print and (orientation: portrait) {
@@ -152,24 +178,40 @@ the changes are not from media queries, but from the use of flex.) */
         background-image: none;
     }
 
-    /* nav {
-        flex-direction: row;
+    header {
         justify-content: space-between;
-    } */
+    }
+
+    nav {
+        flex-direction: row;
+        width: 100%;
+    }
 
     .nav_links {
         flex-direction: row;
         justify-content: space-between;
+        justify-content: space-around;
         
     }
 
     .pricing {
         align-items:end;
+        flex-direction: row;
+        flex-wrap: nowrap;
     }
 
     .card {
         border: solid 2px #45ADDD;
-        flex-basis: 325px;
+        flex: 0 1 325px;
+        
+        
     }
-    
+
+    #gallery, .gallery {
+        display: none;
+    }
+
+    div > ul > li:nth-child(2)::after {
+        content: "\1F44D"; /* Thumbs-up emoji Unicode */
+      }
 }
