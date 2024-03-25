@@ -1,3 +1,4 @@
+/*creating logo Animation to then add it to logo*/
 @keyframes logoAnimation {
     from {
         width: 25px;
@@ -9,15 +10,16 @@
     }
 }
 
+/* adding animation above to the actual logo */
 #logo {
     animation-name: logoAnimation;
     animation-duration: 5s;
     animation-fill-mode: forwards;
 }
 
-/* Edit the body element to use the Poppins font (using Google fonts) 
-with serif as a backup. It should also use the image “concrete_seamless.png” 
-as a background-image with a backup color of #f1f1f1. */
+/* Body elements all have font Poppins (Google fonts), with serif as back up.
+Also set background img to concrete_seamless.png,
+and background color to #f1f1f1. */
 
 body {
     font-family: "Poppins", sans-serif;
@@ -25,7 +27,7 @@ body {
     background-color: #f1f1f1;
 }
 
-/* Edit the css for the header tag (all instances) to use flex to match our example */
+/* All header tags have flex display, set up in column, and horizontally aligned */
 
 header {
     display: flex;
@@ -33,22 +35,20 @@ header {
     align-items: center;
 }
 
-/* Edit the css for the nav_links class to use flex to match our example. 
-Do not modify the list items or the links - modify the nav_links class to use flex. */
+/* All nav links have flex display and have column flex direction */
 
 .nav_links {
     display: flex;
     flex-direction: column;
 }
 
-/* Style the links so that they have the same color even after they have been visited.  */
+/* Nav links will maintain same color after having already been used.  */
 
 .nav_item a:visited {
     color: rgb(0, 0, 205);
 }
 
-/* Identify the proper selector to style ONLY those header elements that are direct children of a card class.  
-The required styling is the following: 
+/* Modify every header element that is a child of card class according to following properties: 
 background: #288088,
 solid 2px border using #45ADAD,
 20px of padding on the top and the bottom, 
@@ -64,19 +64,16 @@ solid 2px border using #45ADAD,
     border-top-right-radius: 50px;
 }
 
-/* Check your work. The corners probably aren’t curving quite as you expected. 
-Use Inspect Element to fix this problem. You will need to utilize a second selector */
+/* Make sure that the div's corners are also rounded so
+white background cannot be seen */
 
 div.card {
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
 }
 
-/* Edit the css for the card class to match our example. 
-Achieve this by using a flex-property to specify an initial “size” of 450px.  
-You need to think about this from a “flex” perspective and realize that 
-flex-direction will affect the size of the elements.  
-You can see that in the mobile view they all have the same width.  */
+/* Use flex display for cards and
+use flex-direction to set them up in columns  */
 
 .card {
     display: flex;
@@ -85,9 +82,8 @@ You can see that in the mobile view they all have the same width.  */
     flex-shrink: 1;
 }
 
-/* Edit the css for the pricing class to match our example. 
-You should use flex and the cards should be centered 
-both horizontally and vertically. */
+/* Set the actual objects in a column so they will be above each other.
+center them both vertically and horizontally. */
 
 .pricing {
     display: flex;
@@ -97,9 +93,7 @@ both horizontally and vertically. */
     flex-wrap: wrap;
 }
 
-/* Style the images in the gallery class. These elements will have a solid 
-10px border with a color of #50C7C7, 10px margin on all four sides and
-a width of 300px.  */
+/* setting style for gallery images.  */
 
 .gallery img {
     border: solid 10px #50C7C7;
@@ -107,9 +101,9 @@ a width of 300px.  */
     width: 300px;
 }
 
-/* Edit the css for the gallery class to use flex to match our example. 
-(You may want to look at the screen shots from 1200px and 1500px as well -  
-the changes are not from media queries, but from the use of flex.) */
+/* Creating flex display properties for gallery,
+so it will self adjust according to the screen size,
+no media query necessary */
 
 .gallery {
     display: flex;
@@ -121,24 +115,21 @@ the changes are not from media queries, but from the use of flex.) */
 /* Media query for screen width greater than 900px */
 @media screen and (min-width: 900px) {
 
-    /* Edit the css for the header tag (all instances) 
-    and the nav_links class to match our example using flex-properties. 
-    The logo should be as far to the left as possible and the links 
-    as far to the right as possible. Use flex properties, NOT position properties. */
+    /* change flex display for header to row direction,
+    to have logo and nav link be in one line. */
     header {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
 
+    /* move nav links to the end of the row. */
     .nav_links {
         flex-direction: row;
         justify-content: flex-end;
     }
 
-    /* Edit the css for the pricing and card classes to match our example. 
-    Part of achieving this is by using a flex-property to specify a “size” of 275px. 
-    Notice that the elements do not have the same height, but do have the same width. */
+    /* add the new size of the cards, set to 275px using flex-basis */
 
     .card {
         flex-basis: 275px;
@@ -148,17 +139,15 @@ the changes are not from media queries, but from the use of flex.) */
         flex-basis: 275px;
     }
 
-    /* Modify the first header (the one not inside main) 
-    so that it remains visible at the top of the screen 
-    even as we scroll down. Make sure that it is always visible. */
+    /* change only the very first header, so that it will stay at the top of the screen
+    even as we scroll down the page */
     body>header {
         position: fixed;
         top: 0;
         width: 100%;
-
-        /* Add any other styles as needed */
     }
 
+    /* make sure the rest of the content is visible (adjusting to the new header. */
     main {
         margin-top: 100px;
     }
@@ -166,6 +155,7 @@ the changes are not from media queries, but from the use of flex.) */
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
+    /* disable logo animation when user prefers reduced motion. */
     #logo {
         animation: none;
     }
@@ -173,6 +163,7 @@ the changes are not from media queries, but from the use of flex.) */
 
 @media print and (orientation: portrait) {
     /* Styles for printing in portrait mode */
+    
     body {
         font-family: Arial, Helvetica, sans-serif;
         background-image: none;
@@ -182,11 +173,13 @@ the changes are not from media queries, but from the use of flex.) */
         justify-content: space-between;
     }
 
+    /* enlarging nav so that nav links can be spread out across its row */
     nav {
         flex-direction: row;
         width: 100%;
     }
 
+    /* spread out nav_links across their row */
     .nav_links {
         flex-direction: row;
         justify-content: space-between;
@@ -194,12 +187,15 @@ the changes are not from media queries, but from the use of flex.) */
         
     }
 
+    /* ensure all 3 cards will be in the same row and will be their bottom is aligned. */
     .pricing {
         align-items:end;
         flex-direction: row;
         flex-wrap: nowrap;
     }
 
+    /* allow card to shrink to fit to its parent if necessary,
+    as well as set it to its new size (325px) */
     .card {
         border: solid 2px #45ADDD;
         flex: 0 1 325px;
@@ -207,11 +203,14 @@ the changes are not from media queries, but from the use of flex.) */
         
     }
 
+    /* hide gallery for this view */
+
     #gallery, .gallery {
         display: none;
     }
 
+    /* add thuumbs-up emoji to the end of sentences in the cards */
     div > ul > li:nth-child(2)::after {
-        content: "\1F44D"; /* Thumbs-up emoji Unicode */
+        content: "\1F44D";
       }
 }
